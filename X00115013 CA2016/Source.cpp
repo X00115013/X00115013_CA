@@ -8,7 +8,7 @@ int main() {
 
 	BinaryTree b1;
 	b1.getMessage();
-	b1.compressCode();
+	b1.getFrequency();
 	system("pause");
 	return 0;
 }

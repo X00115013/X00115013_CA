@@ -1,12 +1,4 @@
-/*
-* btree.cpp
-*
-*  Created on: 2 Mar 2010
-*      Author: Mary
-*/
 #include "BinaryTree.h"
-#include "FreqNode.h"
-#include "Nodes.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -15,28 +7,17 @@
 #include <queue>
 using namespace std;
 
+struct NodeCmp
+{
+	
+	bool operator()(const HuffNode* lhs, const HuffNode* rhs) const { return (*lhs).letterAmount > rhs->letterAmount; }
+};
 
 
 BinaryTree::BinaryTree() : root(NULL)
 {
 
 }
-
-
-HuffNode BinaryTree::newAdd(int item, HuffNode*& root) {
-	if (root == 0)
-	{
-		Nodes *temp = new HuffNode(item);
-		root = temp;
-	}
-	else {
-		if (item <= root->letterAmount)
-			return newAdd(item, root->leftPtr);
-		else
-			return newAdd(item, root->rightPtr);
-	}
-}
-
 
 // get message from in file
 void BinaryTree::getMessage() {
@@ -50,35 +31,51 @@ void BinaryTree::getMessage() {
 
 // get letter frequency
 void BinaryTree::getFrequency() {
-	priority_queue<Nodes*> fq;
+	map<char , int> huffMap;
+	map<char, int>::const_iterator iter;
+	priority_queue<HuffNode*, std::vector<HuffNode*>, NodeCmp> fq;
 	string messageIn;
-	char letterAfterCount;
-	int letterCount;
+	int letterCount =0;
 	ifstream originalMessage("TextIn.txt");
 	while (getline(originalMessage, messageIn)) {
-		messageIn += messageIn;
+		//messageIn += messageIn;
 	}
 	originalMessage.close();
-
-	for (int i = 0; i <= messageIn.length(); i++) {
-		for (int j = i; j <= messageIn.length() - i; j++) {
+	cout << "Original Message " << endl << "-----------------------" << endl << messageIn << endl << endl;
+	
+	for (unsigned int i = 0; i < messageIn.length(); i++) {
+		for (unsigned int j = i; j < messageIn.length() ; j++) {
 			if (messageIn[i] == messageIn[j]) {
 				letterCount++;
 			}
 		}
-			Nodes* pushed = new FreqNode(messageIn[i], letterCount);
-			fq.push(pushed);
+			huffMap.insert(pair<char, int>(messageIn[i], letterCount));
+			cout << "Letter: " << messageIn[i] << endl;
+			cout << "Letter Count: " << letterCount << endl;
 			letterCount = 0;
 	}
-
-	for (int i = 0; i < fq.size() - 1; i++)
+	//Assign the movie name as an unique iterator 
+	for (int i = 0; i < huffMap.size(); ++i)
 	{
-		Nodes* a = fq.top();
+		iter = huffMap.find(letterCount);
+		if (iter == huffMap.end())
+			cout << "Map is passed to Priority Queue" << endl;
+		else {
+			HuffNode* huffTemp;
+			(*huffTemp).letterAmount = huffMap.find(messageIn[i]);
+			(*huffTemp).theLetter = iter->letterCount;
+			fq.push(huffTemp*);
+
+	}
+	for (unsigned int i = 0; i < fq.size() - 1; i++)
+	{
+		HuffNode* a = fq.top();
 		fq.pop();
-		Nodes* b = fq.top();
+		HuffNode* b = fq.top();
 		fq.pop();
-		Nodes* p = new HuffNode((a->letterAmount + b->letterAmount), a,b); // The new node has two children `a` and `b`.
+		HuffNode* p = new HuffNode((a->letterAmount + b->letterAmount), a,b); // The new node has two children `a` and `b`.
 		fq.push(p);
 	}
+	
 	//return fq.top(); // Return root.
 }

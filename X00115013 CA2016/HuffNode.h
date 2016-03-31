@@ -1,12 +1,16 @@
 #pragma once
-#include "Nodes.h"
-class HuffNode: public Nodes
+class HuffNode
 {
 	friend class BinaryTree;
+	friend struct nodeCmp;
 public:
-	HuffNode(int letterAmount, Nodes* c0, Nodes* c1);
-private:
-	Nodes *leftPtr;
+	HuffNode(char theLetter, int letterAmount);
+	HuffNode(int letterAmount, HuffNode* c0, HuffNode* c1);
 	int letterAmount;
-	Nodes *rightPtr;
+	char theLetter;
+private:
+	//char theLetter;
+	HuffNode *leftPtr;
+	//int letterAmount;
+	HuffNode *rightPtr;
 };

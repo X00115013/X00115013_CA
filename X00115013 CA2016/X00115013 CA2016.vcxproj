@@ -121,16 +121,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BinaryTree.cpp" />
-    <ClCompile Include="FreqNode.cpp" />
-    <ClCompile Include="Nodes.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="HuffNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryTree.h" />
-    <ClInclude Include="FreqNode.h" />
     <ClInclude Include="HuffNode.h" />
-    <ClInclude Include="Nodes.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="TextIn.txt" />

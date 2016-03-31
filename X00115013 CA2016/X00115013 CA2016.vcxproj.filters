@@ -24,24 +24,12 @@
     <ClCompile Include="HuffNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FreqNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Nodes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HuffNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FreqNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Nodes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

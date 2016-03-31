@@ -1,6 +1,6 @@
 #include "HuffNode.h"
 using namespace std;
-HuffNode::HuffNode(int theAmount, Nodes* c0, Nodes* c1) :letterAmount(theAmount), rightPtr(c0), leftPtr(c1)
-{
 
-}
+HuffNode::HuffNode(char letter, int theAmount) :theLetter(letter), letterAmount(theAmount) {};
+
+HuffNode::HuffNode(int theAmount, HuffNode* c0, HuffNode* c1) :letterAmount(theAmount), rightPtr(c0), leftPtr(c1) {};

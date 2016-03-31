@@ -9,11 +9,10 @@ public:
 	BinaryTree();
 	HuffNode newAdd(int, HuffNode *&n);
 	void getMessage();
-	void compressCode();
 	void getFrequency();
 private:
 
-	Nodes *root;
+	HuffNode *root;
 
 };
 
