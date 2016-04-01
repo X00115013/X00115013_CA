@@ -1,4 +1,4 @@
-﻿Build started 31/03/2016 12:51:57 AM.
+﻿Build started 01/04/2016 12:33:18 AM.
      1>Project "C:\Users\Tom\Documents\Visual Studio 2015\Projects\X00115013 CA2016\X00115013 CA2016\X00115013 CA2016.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt BinaryTree.cpp
@@ -12,4 +12,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.46
+Time Elapsed 00:00:01.57

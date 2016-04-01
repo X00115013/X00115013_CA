@@ -7,12 +7,16 @@ class BinaryTree
 {
 public:
 	BinaryTree();
-	HuffNode newAdd(int, HuffNode *&n);
 	void getMessage();
 	void getFrequency();
-private:
+	int letterCount = 0;
+	vector<bool> HuffCode;
+	map<char, int> huffMap;
 
+private:
+	void BinaryTree::getHuffmanEncoding(HuffNode* root, string code);
 	HuffNode *root;
+	
 
 };
 
