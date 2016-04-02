@@ -9,6 +9,7 @@ public:
 	int letterAmount;
 	char theLetter;
 private:
+	//void setHuffCode(string code);
 	//char theLetter;
 	HuffNode *leftPtr;
 	//int letterAmount;

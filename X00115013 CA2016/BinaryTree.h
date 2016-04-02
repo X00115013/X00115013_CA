@@ -2,19 +2,25 @@
 #include "HuffNode.h"
 #include <queue>
 #include <map>
-#include <string>
 class BinaryTree
 {
 public:
 	BinaryTree();
+	~BinaryTree();
 	void getMessage();
 	void getFrequency();
 	int letterCount = 0;
-	vector<bool> HuffCode;
-	map<char, int> huffMap;
-
+	//vector<bool> HuffCode;
+	std::map<char, int> huffMap;
+	std::string code;
+	void getHuffmanEncode(HuffNode*, std::string);
+	std::map<char, std::string> huffMapCapture;
+	void displayHuffmanTable();
+	void encode();
+	std::string encodedData;
+	void getOutMessage();
 private:
-	void BinaryTree::getHuffmanEncoding(HuffNode* root, string code);
+	
 	HuffNode *root;
 	
 

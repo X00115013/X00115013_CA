@@ -16,6 +16,10 @@ struct NodeCmp
 
 BinaryTree::BinaryTree() : root(NULL)
 {
+}
+
+BinaryTree::~BinaryTree()
+{
 
 }
 
@@ -31,11 +35,11 @@ void BinaryTree::getMessage() {
 
 // get letter frequency
 void BinaryTree::getFrequency() {
+	//map<char, int> huffMap;
 	priority_queue<HuffNode*, std::vector<HuffNode*>, NodeCmp> fq;
 	string messageIn;
 	ifstream originalMessage("TextIn.txt");
 	while (getline(originalMessage, messageIn)) {
-		//messageIn += messageIn;
 	}
 	originalMessage.close();
 	cout << "Original Message " << endl << "-----------------------" << endl << messageIn << endl << endl;
@@ -59,7 +63,7 @@ void BinaryTree::getFrequency() {
 		fq.push(new HuffNode(iter->first, iter->second));
 		cout << "First: " <<iter->first << "\tSecond: " << iter->second << endl;
 		cout << "Passed " << endl;
-	}
+	};
 	while (fq.size() > 1){
 		HuffNode* a = fq.top();
 		fq.pop();
@@ -69,20 +73,52 @@ void BinaryTree::getFrequency() {
 		cout << "First-b PQ: " << b->letterAmount << "\tSecond-b PQ: " << b->theLetter << endl;
 		HuffNode* p = new HuffNode((a->letterAmount + b->letterAmount), a, b); // The new node has two children `a` and `b`.
 		fq.push(p);
-	}
-	string code = " ";
-	getHuffmanEncoding(fq.top(), code);
+	};
+	string codeIns = " ";
+	HuffNode* c = fq.top();
+	getHuffmanEncode(c, codeIns);
 }
 
 
-void BinaryTree::getHuffmanEncoding(HuffNode* root, string code) {
+void BinaryTree::getHuffmanEncode(HuffNode* root, std::string codeIn) {
 		if (root->leftPtr == NULL) {
-				root->setHuffmanCode(code);
-				huffmanTable.insert(pair<char, string>((*root).theLetter, code));
+			//code = codeIn;
+				huffMapCapture.insert(pair<char, std::string>((*root).theLetter, codeIn));
 				return;
 		}
 		else {
-			getHuffmanEncoding(root->leftPtr, code + "0");
-			getHuffmanEncoding(root->rightPtr, code + "1");
+			getHuffmanEncode(root->leftPtr, codeIn + "0");
+			getHuffmanEncode(root->rightPtr, codeIn + "1");
 	}
+}
+
+
+void BinaryTree::displayHuffmanTable() {
+		cout << "Huffman Map:" << endl;
+		for (map<char, string>::iterator it = huffMapCapture.begin();
+		it != huffMapCapture.end(); ++it) {
+			cout << it->first << "\t" << it->second << endl;
+	}
+}
+
+void BinaryTree::encode() {
+	for (map<char, string>::iterator it = huffMapCapture.begin();
+	it != huffMapCapture.end(); ++it) {
+		encodedData.append(it->second);
+		encodedData.append(" ");
+	}
+	cout << "Encoded file: " << encodedData << endl;
+
+	ofstream ofs("TextOut.txt", ofstream::out);
+	ofs << encodedData;
+	ofs.close();
+}
+
+void BinaryTree::getOutMessage() {
+	string messageIn = " ";
+	ifstream originalMessage("TextOut.txt");
+	while (getline(originalMessage, messageIn)) {
+		cout << "Encoded Message " << endl << "-----------------------" << endl << messageIn << endl << endl;
+	}
+	originalMessage.close();
 }
