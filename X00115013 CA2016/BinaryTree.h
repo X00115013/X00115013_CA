@@ -7,7 +7,7 @@ class BinaryTree
 public:
 	BinaryTree();
 	~BinaryTree();
-	void getMessage();
+	std::string getMessage();
 	void getFrequency();
 	int letterCount = 0;
 	//vector<bool> HuffCode;
@@ -16,7 +16,7 @@ public:
 	void getHuffmanEncode(HuffNode*, std::string);
 	std::map<char, std::string> huffMapCapture;
 	void displayHuffmanTable();
-	void encode();
+	void encode(std::string);
 	std::string encodedData;
 	void getOutMessage();
 private:

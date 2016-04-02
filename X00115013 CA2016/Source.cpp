@@ -10,7 +10,7 @@ int main() {
 	b1.getMessage();
 	b1.getFrequency();
 	b1.displayHuffmanTable();
-	b1.encode();
+	b1.encode(b1.getMessage());
 	b1.getOutMessage();
 	system("pause");
 	return 0;
