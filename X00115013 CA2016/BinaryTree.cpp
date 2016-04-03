@@ -87,8 +87,8 @@ void BinaryTree::getFrequency() {
 void BinaryTree::getHuffmanEncode(HuffNode* root, std::string codeIn) {
 		if (root->leftPtr == NULL) {
 			//code = codeIn;
-				huffMapCapture.insert(pair<char, std::string>((*root).theLetter, codeIn));
-				return;
+			huffMapCapture.insert(pair<char, std::string>((*root).theLetter, codeIn));
+			return;
 		}
 		else {
 			getHuffmanEncode(root->leftPtr, codeIn + "0");
@@ -112,35 +112,39 @@ void BinaryTree::encode(string messageIn) {
 		it != huffMapCapture.end(); ++it) {
 			if (messageIn[i] == it->first) {
 				encodedData.append(it->second);
-				//encodedData.append(" ");
-				//cout << "Encoded loop: " << encodedData << endl;
 			}
 		}
 	}
 	cout << "Encoded file: " << encodedData << endl;
+	if (encodedData.length() % 8 != 0) {
+		cout << "\nNothing here to run" << endl;
 
-	std::istringstream in(encodedData);
-	stringstream ss;
-	string s;
-	char c = 'a';
-	ss << c;
-	ss >> s;
-	std::bitset<8> bs;
-	string ascii = "";
-	char temp = ' ';
-	while (in >> bs) {
-		//cout << char(bs.to_ulong()) << "\t\t";
-		temp = char(bs.to_ulong());
-		cout << temp << "\t";
-		//ss << temp;
-		//ss >> s;
-		//cout << s;
-		//ascii.append(s);
 	}
-	ofstream ofs("TextOut.txt", ofstream::out);
-	//ofs << encodedData;
-	ofs << ascii;
-	ofs.close();
+	else {
+		istringstream in(encodedData);
+		stringstream ss;
+		bitset<8> bs;
+		ofstream ofs("TextOut.txt", ofstream::out);
+		while (in >> bs) {
+			char temp = ' ';
+			temp = char(bs.to_ulong());
+			cout << temp << "\t";
+			ofs << temp;
+			//temp += temp;
+			//ss << temp;
+			//ss >> s;
+			//cout << s;
+			//s += s;
+			//ascii.append(s);
+		}
+		//ascii = s;
+
+		//ofstream ofs("TextOut.txt", ofstream::out);
+		//ofs << encodedData;
+		cout << "\t\tGetting Here   " << endl;
+		//ofs << ascii;
+		ofs.close();
+	}
 }
 
 void BinaryTree::getOutMessage() {
