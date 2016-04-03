@@ -129,6 +129,7 @@
     <ClInclude Include="HuffNode.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="ASCII.txt" />
     <Text Include="TextIn.txt" />
     <Text Include="TextOut.txt" />
   </ItemGroup>

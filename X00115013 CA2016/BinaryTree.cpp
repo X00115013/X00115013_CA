@@ -80,6 +80,7 @@ void BinaryTree::getFrequency() {
 	};
 	string codeIns = "";
 	HuffNode* c = fq.top();
+	root = c;
 	getHuffmanEncode(c, codeIns);
 }
 
@@ -116,36 +117,68 @@ void BinaryTree::encode(string messageIn) {
 		}
 	}
 	cout << "Encoded file: " << encodedData << endl;
-	if (encodedData.length() % 8 != 0) {
-		cout << "\nNothing here to run" << endl;
-
-	}
-	else {
-		istringstream in(encodedData);
-		stringstream ss;
-		bitset<8> bs;
-		ofstream ofs("TextOut.txt", ofstream::out);
-		while (in >> bs) {
-			char temp = ' ';
-			temp = char(bs.to_ulong());
-			cout << temp << "\t";
-			ofs << temp;
-			//temp += temp;
-			//ss << temp;
-			//ss >> s;
-			//cout << s;
-			//s += s;
-			//ascii.append(s);
+	ofstream ofCode("TextOut.txt", ofstream::out);
+	ofCode << encodedData;
+	ofCode.close();
+	int filler = 0;
+	bool loop = true;
+	while (loop) {
+		if (encodedData.length() % 8 != 0) {
+			cout << "\nNothing here to run" << endl;
+			cout << "This is the length before : " << encodedData.length() << endl;
+			filler = encodedData.length() % 8;
+			for (int i = 0; i < (8 - filler); i++) {
+				encodedData.append("0");
+			}
 		}
-		//ascii = s;
-
-		//ofstream ofs("TextOut.txt", ofstream::out);
-		//ofs << encodedData;
-		cout << "\t\tGetting Here   " << endl;
-		//ofs << ascii;
-		ofs.close();
+		else {
+			cout << "This is the length after : " << encodedData.length() << endl; 
+			istringstream in(encodedData);
+			bitset<8> bs;
+			ofstream ofs("ASCII.txt", ofstream::out);
+			while (in >> bs) {
+				char temp = ' ';
+				temp = char(bs.to_ulong());
+				cout << temp << "\t";
+				ofs << temp;
+			}
+			cout << "\t\tGetting Here   " << endl;
+			ofs.close();
+			loop = false;
+		}
 	}
 }
+
+void BinaryTree::decode() {
+
+	string messageIn = " ";
+	ifstream originalMessage("TextOut.txt");
+	while (getline(originalMessage, messageIn)) {
+		cout << "\nTo be Decoded " << endl << "-----------------------" << endl << messageIn << endl << endl;
+	}
+	originalMessage.close();
+
+	string res = "";
+	HuffNode* node = root;
+
+	for (unsigned int i = 0; i < messageIn.length(); i++) {
+			if (messageIn[i] == '0') {
+				node = node->leftPtr;
+			}
+			else if (messageIn[i] == '1') {
+				node = node->rightPtr;
+			}
+			if (node->leftPtr == NULL)
+			{
+				res += node->theLetter;
+				node = root;
+			}
+		}
+
+	cout << "\nDecoded " << endl << "-----------------------" << endl << res << endl << endl;
+
+}
+
 
 void BinaryTree::getOutMessage() {
 	string messageIn = " ";

@@ -12,6 +12,7 @@ int main() {
 	b1.displayHuffmanTable();
 	b1.encode(b1.getMessage());
 	b1.getOutMessage();
+	b1.decode();
 	system("pause");
 	return 0;
 }

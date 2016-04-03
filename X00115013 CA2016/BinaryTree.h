@@ -10,7 +10,6 @@ public:
 	std::string getMessage();
 	void getFrequency();
 	int letterCount = 0;
-	//vector<bool> HuffCode;
 	std::map<char, int> huffMap;
 	std::string code;
 	void getHuffmanEncode(HuffNode*, std::string);
@@ -18,7 +17,9 @@ public:
 	void displayHuffmanTable();
 	void encode(std::string);
 	std::string encodedData;
+	std::string decodedData;
 	void getOutMessage();
+	void decode();
 private:
 	
 	HuffNode *root;
