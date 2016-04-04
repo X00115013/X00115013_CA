@@ -43,5 +43,8 @@
     <Text Include="ASCII.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="DecodedText.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

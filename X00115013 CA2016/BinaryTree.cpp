@@ -87,7 +87,6 @@ void BinaryTree::getFrequency() {
 
 void BinaryTree::getHuffmanEncode(HuffNode* root, std::string codeIn) {
 		if (root->leftPtr == NULL) {
-			//code = codeIn;
 			huffMapCapture.insert(pair<char, std::string>((*root).theLetter, codeIn));
 			return;
 		}
@@ -176,7 +175,9 @@ void BinaryTree::decode() {
 		}
 
 	cout << "\nDecoded " << endl << "-----------------------" << endl << res << endl << endl;
-
+	ofstream ofDeCode("DecodedText.txt", ofstream::out);
+	ofDeCode << res;
+	ofDeCode.close();
 }
 
 

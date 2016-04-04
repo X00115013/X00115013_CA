@@ -130,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ASCII.txt" />
+    <Text Include="DecodedText.txt" />
     <Text Include="TextIn.txt" />
     <Text Include="TextOut.txt" />
   </ItemGroup>
