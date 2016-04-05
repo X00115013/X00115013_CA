@@ -8,6 +8,9 @@
 #include <cstring>
 #include <queue>
 #include <sstream>
+#include <istream>
+#include <ostream>
+#include <cstdlib>
 using namespace std;
 
 struct NodeCmp
@@ -123,7 +126,6 @@ void BinaryTree::encode(string messageIn) {
 	bool loop = true;
 	while (loop) {
 		if (encodedData.length() % 8 != 0) {
-			cout << "\nNothing here to run" << endl;
 			cout << "This is the length before : " << encodedData.length() << endl;
 			filler = encodedData.length() % 8;
 			for (int i = 0; i < (8 - filler); i++) {
@@ -149,22 +151,51 @@ void BinaryTree::encode(string messageIn) {
 }
 
 void BinaryTree::decode() {
-
+	int m[8];
+	int charLoop = 0;
 	string messageIn = " ";
-	ifstream originalMessage("TextOut.txt");
+	string asciiToBinary = "";
+	ifstream originalMessage("ASCII.txt");
 	while (getline(originalMessage, messageIn)) {
-		cout << "\nTo be Decoded " << endl << "-----------------------" << endl << messageIn << endl << endl;
+
 	}
 	originalMessage.close();
+
+	cout << "Message from ASCII " << messageIn << endl;
+
+	for (unsigned int j = 0; j < messageIn.length();j++) {
+		cout << "In A to B loop: " << messageIn[j] << endl;
+		for (int i = 0; i < 8; i++)
+		{
+
+			m[i] = messageIn[j] % 2;
+			//cout << "Message Text " << messageIn[j] << endl;
+			messageIn[j] = messageIn[j] / 2;
+			//cout << "Message Text After " << messageIn[j] << endl;
+		}
+
+		int top, bottom;
+
+		for (bottom = 0, top = 7; bottom < 8; bottom++, top--)
+		{
+			//cout << m[top] << endl;
+			stringstream ss;
+			ss << m[top];
+			string temp = ss.str();
+			asciiToBinary.append(temp);
+		}
+	}
+
+	cout << "ASCII to Binary\n" << asciiToBinary << endl;
 
 	string res = "";
 	HuffNode* node = root;
 
-	for (unsigned int i = 0; i < messageIn.length(); i++) {
-			if (messageIn[i] == '0') {
+	for (unsigned int i = 0; i < asciiToBinary.length(); i++) {
+			if (asciiToBinary[i] == '0') {
 				node = node->leftPtr;
 			}
-			else if (messageIn[i] == '1') {
+			else if (asciiToBinary[i] == '1') {
 				node = node->rightPtr;
 			}
 			if (node->leftPtr == NULL)
