@@ -1,7 +1,7 @@
 #pragma once
 class HuffNode
 {
-	friend class BinaryTree;
+	friend class HuffTree;
 	friend struct nodeCmp;
 public:
 	HuffNode(char theLetter, int letterAmount);
@@ -9,9 +9,6 @@ public:
 	int letterAmount;
 	char theLetter;
 private:
-	//void setHuffCode(string code);
-	//char theLetter;
 	HuffNode *leftPtr;
-	//int letterAmount;
 	HuffNode *rightPtr;
 };

@@ -18,18 +18,18 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BinaryTree.cpp">
+    <ClCompile Include="HuffNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HuffNode.cpp">
+    <ClCompile Include="HuffTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BinaryTree.h">
+    <ClInclude Include="HuffNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HuffNode.h">
+    <ClInclude Include="HuffTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

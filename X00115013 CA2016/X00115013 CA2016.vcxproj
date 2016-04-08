@@ -120,12 +120,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BinaryTree.cpp" />
+    <ClCompile Include="HuffTree.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="HuffNode.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BinaryTree.h" />
+    <ClInclude Include="HuffTree.h" />
     <ClInclude Include="HuffNode.h" />
   </ItemGroup>
   <ItemGroup>
